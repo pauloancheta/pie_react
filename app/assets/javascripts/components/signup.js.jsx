@@ -16,10 +16,7 @@ var Signup = React.createClass({
       password_confirmation: newUserPasswordConfirm,
     }
     
-    // create post in the database
     $.post('/users', data);
-
-    console.log('new user submited');
   },
 
   render: function(){
