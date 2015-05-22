@@ -13,6 +13,12 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :development do
+  gem 'hirb'
+  gem 'interactive_editor'
+  gem 'awesome_print'
+end
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry'
