@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  validates :email, uniqueness: true
 
   def self.create_from_api(response)
     User.new_from_api(response).save
