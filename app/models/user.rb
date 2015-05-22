@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   def self.create_from_api(response)
-    User.new_from_api(response).save
+    user = User.new_from_api(response)
+    user.save
+    user
   end
 
   def self.new_from_api(response)

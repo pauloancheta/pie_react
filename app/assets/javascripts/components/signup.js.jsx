@@ -1,4 +1,4 @@
-var Login = React.createClass({
+var Signup = React.createClass({
   getInitialState: function(){
     return { user: this.props.user }
   },
