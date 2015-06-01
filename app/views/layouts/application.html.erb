@@ -8,6 +8,19 @@
 </head>
 <body>
 
+<!-- tool-bar -->
+<header>
+  <h1 class="logo">Picky Eater</h1>
+  <% if user_signed_in? %>
+    <% if current_user.is_admin %>
+    <% else %> 
+    <% end %>
+    <%= link_to "Sign Out", logout_path %>
+  <% else %>
+  <% end %>
+
+</header>
+
 <%= yield %>
 
 </body>

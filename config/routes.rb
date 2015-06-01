@@ -10,5 +10,11 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
 
   # resources :sessions, only: [:new, :create, :destroy]
-  resources :users
+  resources :users do
+    resources :restaurants
+  end
+
+  resources :restaurants, only:[] do
+    resources :menus
+  end
 end
