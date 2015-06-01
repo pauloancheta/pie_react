@@ -26,7 +26,7 @@ var IndexPage = React.createClass({
   render: function(){
     restuarantArray = []
     this.state.restaurants.forEach(function(restaurant, key){
-      restuarantArray.push(<Restaurant resName={restaurant.name} resImage={restaurant.image_url} key={key} />)
+      restuarantArray.push(<Restaurant resName={restaurant.name} resImage={restaurant.image_url} resID={restaurant.id} key={key} />)
     });
     return(
       <div>

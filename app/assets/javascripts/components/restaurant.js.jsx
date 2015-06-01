@@ -4,11 +4,14 @@ var Restaurant = React.createClass({
   },
 
   render: function(){
+    var restaurantLink = 'restaurants/' + this.props.resID;
     return(
-      <div className="restaurant-card">
-        <img src={this.state.image} />
-        <h1>{this.state.name}</h1>
-      </div>
+      <a href={restaurantLink}>
+        <div className="restaurant-card">
+          <img src={this.state.image} />
+          <h1>{this.state.name}</h1>
+        </div>
+      </a>
     )
   }
 })

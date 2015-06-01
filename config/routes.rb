@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # resources :sessions, only: [:new, :create, :destroy]
   resources :users
 
-  resources :restaurants do
+  resources :restaurants, only: [:create, :destroy, :show] do
     resources :menus
   end
 end
