@@ -10,14 +10,23 @@ var IndexPage = React.createClass({
        resEmail = React.findDOMNode(this.refs.resEmail).value + '',
        resPhone = React.findDOMNode(this.refs.resPhone).value + '',
        resImage = React.findDOMNode(this.refs.resImage).value + '';
+
+    var newData = {name: resName, address: resAddress, email: resEmail, phone_number: resPhone, image_url: resImage}
     
-    $.post('/restaurants', {name: resName, address: resAddress, email: resEmail, phone_number: resPhone, image_url: resImage})
+    $.post('/restaurants', newData)
+
+    // Reset values of forms
+    React.findDOMNode(this.refs.resName).value = '';
+    React.findDOMNode(this.refs.resAddress).value = '';
+    React.findDOMNode(this.refs.resEmail).value = '';
+    React.findDOMNode(this.refs.resPhone).value = '';
+    React.findDOMNode(this.refs.resImage).value = '';
   },
 
   render: function(){
     restuarantArray = []
-    this.state.restaurants.forEach(function(restaurant){
-      restuarantArray.push(restaurant)
+    this.state.restaurants.forEach(function(restaurant, key){
+      restuarantArray.push(<Restaurant resName={restaurant.name} resImage={restaurant.image_url} key={key} />)
     });
     return(
       <div>
@@ -29,7 +38,9 @@ var IndexPage = React.createClass({
           <input type="text" placeholder="Restaurant Image Url" ref="resImage"></input>
           <input type="submit"></input>
         </form>
-        {restuarantArray}
+        <div className="restaurants-container">
+          {restuarantArray}
+        </div>
       </div>
     )
   }

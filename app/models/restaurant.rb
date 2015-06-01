@@ -1,6 +1,12 @@
 class Restaurant < ActiveRecord::Base
   belongs_to :user
 
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :email, presence: true
+  validates :phone_number, presence: true
+  validates :image_url, presence: true
+
   def self.create_from_api(response)
     restaurant = Restaurant.new_from_api(response)
     restaurant.save
