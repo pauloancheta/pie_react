@@ -1,5 +1,6 @@
 class Restaurant < ActiveRecord::Base
   belongs_to :user
+  has_many :menus
 
   validates :name, presence: true
   validates :address, presence: true

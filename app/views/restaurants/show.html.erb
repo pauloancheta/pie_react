@@ -1,1 +1,7 @@
-<%= react_component('RestaurantShow', {currentUser: current_user, restaurant: @restaurant }) %>
+<h1><%= @restaurant.name %></h1>
+  <%= react_component('NewMenu', {restaurant: @restaurant, menus: @menus}) %>
+
+<% @menus.each do |menu| %>
+  <h1><%= menu.name %> </h1>
+  <%= react_component('DishesIndex', {dishes: menu.dishes}) %>
+<% end %>
