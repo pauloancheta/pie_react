@@ -10,6 +10,7 @@ gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 gem 'bcrypt'
 gem 'quiet_assets'
 gem 'simple_form'
+gem 'workflow'
 
 group :production do
   gem 'rails_12factor'
