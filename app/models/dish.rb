@@ -1,19 +1,19 @@
 class Dish < ActiveRecord::Base
+  include Workflow
+
   belongs_to :menu
 
-  def self.create_from_api(response)
-    dish = Dish.new_from_api(response)
-    dish.save
-  end
-
-  private
-
-  def self.new_from_api(response)
-    Dish.new(
-      name: response[:name],
-      price: response[:price],
-      description: response[:description],
-      menu_id: response[:menu_id]
-    )
+  workflow do
+    state :draft do
+      event :publish, transitions_to: :available
+    end
+    state :available do
+      event :pause, transitions_to: :unavailable
+    end
+    state :unavailable do
+      event :unpause, transitions_to: :available
+      event :cancel, transitions_to: :cancelled
+    end
+    state :cancelled
   end
 end

@@ -8,6 +8,5 @@ class DishesController < ApplicationController
                   )
     dish.save!
     render nothing: true
-
   end
 end
