@@ -6,9 +6,13 @@
   <div class="restaurant-menu">
     <h1><%= @restaurant.name %></h1>
     <% @menus.each do |menu| %>
-      <h1><%= menu.name %> </h1>
-      State: <%= menu.state %>
-      <%= menu.change_state %>
+
+      <h2 class="menu-title"><%= menu.name %> </h2>
+      <div class="menu-state">
+        State: <%= menu.state %>
+        <%= menu.change_state %>
+      </div>
+      <hr />
       <%= react_component('DishesIndex', {dishes: menu.dishes}) %>
     <% end %>
   </div>

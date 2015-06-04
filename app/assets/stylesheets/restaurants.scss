@@ -25,3 +25,31 @@
     }
   } 
 }
+.restaurant-menu {
+  width: 65%;
+  .menu-title, .menu-state {
+    display: inline-block;
+  }
+}
+
+.button {
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 2px;
+}
+
+.dish-card{
+  .dish-card__title{
+    display: inline-block;
+    margin-bottom: 0;
+  }
+  .dish-card__price {
+    display: inline-block;
+    margin-left: 30px;
+    margin-bottom: 0;
+  }
+  .dish-card__description{
+    margin-top: 5px;
+  }
+}

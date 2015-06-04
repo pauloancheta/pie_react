@@ -16,18 +16,18 @@ class MenusController < ApplicationController
   def publish
     menu = Menu.find(params[:id])
     menu.publish!
-    render nothing: true
+    redirect_to restaurant_path(menu.restaurant)
   end
 
   def pause
     menu = Menu.find(params[:id])
     menu.pause!
-    render nothing: true
+    redirect_to restaurant_path(menu.restaurant)
   end
 
   def unpause
     menu = Menu.find(params[:id])
     menu.unpause!
-    render nothing: true
+    redirect_to restaurant_path(menu.restaurant)
   end
 end
