@@ -26,6 +26,6 @@ Rails.application.routes.draw do
   # DISH change state
   patch '/publish_dish/:id' => 'dishes#publish', as: :dishes_publish
   patch '/pause_dish/:id' => 'dishes#pause', as: :dishes_pause
-  patce '/unpause_dish/:id' => 'dishes#unpause', as: :dishes_unpause
+  patch '/unpause_dish/:id' => 'dishes#unpause', as: :dishes_unpause
 
 end
