@@ -1,6 +1,6 @@
 var IndexPage = React.createClass({
   getInitialState: function(){
-    return {restaurants: this.props.restaurants}
+    return {user: this.props.user, restaurants: this.props.restaurants}
   },
 
   onRestaurantSubmit: function(e){
@@ -24,22 +24,30 @@ var IndexPage = React.createClass({
   },
 
   render: function(){
-    restuarantArray = []
-    this.state.restaurants.forEach(function(restaurant, key){
-      restuarantArray.push(<Restaurant resName={restaurant.name} resImage={restaurant.image_url} resID={restaurant.id} key={key} />)
-    });
-    return(
-      <div>
+    var restuarantCards = [],
+        createRestaurant = [];
+
+    if(this.state.user.name === 'Paulo'){
+      createRestaurant = (
         <form onSubmit={this.onRestaurantSubmit}>
-          <input type="text" placeholder="Restaurant Name" ref="resName"></input> <br />
-          <input type="text" placeholder="Restaurant Address" ref="resAddress"></input> <br />
-          <input type="text" placeholder="Restaurant Email" ref="resEmail"></input> <br />
-          <input type="text" placeholder="Restaurant Phone Number" ref="resPhone"></input> <br />
-          <input type="text" placeholder="Restaurant Image Url" ref="resImage"></input> <br />
+          <input type="text" placeholder="Restaurant Name" ref="resName"></input>
+          <input type="text" placeholder="Restaurant Address" ref="resAddress"></input>
+          <input type="text" placeholder="Restaurant Email" ref="resEmail"></input>
+          <input type="text" placeholder="Restaurant Phone Number" ref="resPhone"></input>
+          <input type="text" placeholder="Restaurant Image Url" ref="resImage"></input>
           <input type="submit"></input>
         </form>
+      )
+    }
+    this.state.restaurants.forEach(function(restaurant, key){
+      restuarantCards.push(<Restaurant resData={restaurant} key={key} />)
+    });
+
+    return(
+      <div>
+        {createRestaurant}
         <div className="restaurants-container">
-          {restuarantArray}
+          {restuarantCards}
         </div>
       </div>
     )

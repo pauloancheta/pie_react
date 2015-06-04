@@ -1,10 +1,14 @@
 var Restaurant = React.createClass({
   getInitialState: function(){
-    return { name: this.props.resName, image: this.props.resImage }
+    return {
+      name: this.props.resData.name, 
+      image: this.props.resData.image_url 
+    }
   },
 
   render: function(){
-    var restaurantLink = 'restaurants/' + this.props.resID;
+    var restaurantLink = 'restaurants/' + this.props.resData.id;
+
     return(
       <a href={restaurantLink}>
         <div className="restaurant-card">

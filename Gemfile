@@ -11,6 +11,8 @@ gem 'bcrypt'
 gem 'quiet_assets'
 gem 'simple_form'
 gem 'workflow'
+gem 'virtus'
+gem 'draper'
 
 group :production do
   gem 'rails_12factor'

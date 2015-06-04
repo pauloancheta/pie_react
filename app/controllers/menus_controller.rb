@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-  before_action :find_menu, only: [:show, :update, :destroy]
+  before_action :find_menu, only: [:destroy]
   def create
     restaurant = Restaurant.find(params[:restaurant_id])
     menu = restaurant.menus.new(name: params[:name])
@@ -7,24 +7,26 @@ class MenusController < ApplicationController
     render nothing: true
   end
 
-  def index
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    @menus = @restaurant.menus
-    render json: @menus
-  end
-
-  def show
-    @menu = Menu.find(params[:id])
-    render json: @menu
-  end
-
-  def update
-    @menu.update!
+  def destroy
+    @menu.destroy!
     render nothing: true
   end
 
-  def destroy
-    @menu.destroy!
+  def publish
+    menu = Menu.find(params[:id])
+    menu.publish!
+    render nothing: true
+  end
+
+  def pause
+    menu = Menu.find(params[:id])
+    menu.pause!
+    render nothing: true
+  end
+
+  def unpause
+    menu = Menu.find(params[:id])
+    menu.unpause!
     render nothing: true
   end
 

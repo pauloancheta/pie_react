@@ -2,7 +2,8 @@ class Menu < ActiveRecord::Base
   include Workflow
 
   belongs_to :restaurant
-  has_many :dishes
+  has_many :dishes, dependent: :destroy
+
 
   validates :name, presence: true
 
@@ -11,11 +12,14 @@ class Menu < ActiveRecord::Base
       event :publish, transitions_to: :available
     end
     state :available do
-      event :pause, transitions_to: :unavailable
+      event :pause, transitions_to: :paused
+    end
+    state :paused do
+      event :unpause, transitions_to: :available
     end
     state :unavailable do
-      event :unpause, transitions_to: :available
       event :cancel, transitions_to: :cancelled
+      event :unpause, transitions_to: :available
     end
     state :cancelled
   end
