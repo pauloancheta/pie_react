@@ -2,7 +2,8 @@ var Dish = React.createClass({
   getInitialState: function(){
     return {
       dish: this.props.dishData, 
-      workflow: this.props.dishData.workflow_state
+      workflow: this.props.dishData.workflow_state,
+      admin: this.props.admin
     }
   },
 
@@ -29,12 +30,16 @@ var Dish = React.createClass({
   },
 
   render: function(){
+    var changeState = ""
+    if(this.state.admin){
+      changeState = (<a onClick={this.changeState} className="button">{this.state.workflow}</a>)
+    }
     return(
       <div className="dish-card">
         <h2 className="dish-card__title">{this.state.dish.name}</h2>
         <p className="dish-card__price">{this.state.dish.price}</p>
         <p className="dish-card__description">{this.state.dish.description}</p>
-        <a onClick={this.changeState} className="button">{this.state.workflow}</a>
+        {changeState}
       </div>
     )
   }

@@ -1,19 +1,26 @@
 <div class="container">
-  <div class="restaurant-feature-toolbar">
-    <%= react_component('MenuToolbar', {restaurant: @restaurant, menus: @menus}) %>
-  </div>
+  <% if current_user.is_admin %>
+    <div class="restaurant-feature-toolbar">
+      <%= react_component('MenuToolbar', {restaurant: @restaurant, menus: @menus}) %>
+    </div>
+  <% end %>
 
   <div class="restaurant-menu">
     <h1 class="restaurant-title"><%= @restaurant.name %></h1>
     <% @menus.each do |menu| %>
 
       <h2 class="menu-title"><%= menu.name %> </h2>
-      <div class="menu-state">
-        State: <%= menu.state %>
-        <%= menu.change_state %>
-      </div>
-      <hr />
-      <%= react_component('DishesIndex', {dishes: menu.dishes}) %>
+
+      <% if current_user.is_admin %>
+        <div class="menu-state">
+          State: <%= menu.state %>
+          <%= menu.change_state %>
+        </div>
+        <hr />
+        <%= react_component('DishesIndex', {admin: current_user.is_admin, dishes: menu.dishes}) %>
+      <% else %>
+        <%= react_component('DishesIndex', {admin: current_user.is_admin, dishes: menu.dishes.with_available_state}) %>
+      <% end %>
     <% end %>
   </div>
 </div>
