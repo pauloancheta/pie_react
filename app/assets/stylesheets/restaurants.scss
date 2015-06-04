@@ -25,10 +25,15 @@
     }
   } 
 }
+.restaurant-title {
+  text-align: center;
+}
+
 .restaurant-menu {
   width: 65%;
   .menu-title, .menu-state {
     display: inline-block;
+    margin-bottom: 0;
   }
 }
 

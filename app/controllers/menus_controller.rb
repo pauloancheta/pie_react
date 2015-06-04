@@ -1,6 +1,5 @@
 class MenusController < ApplicationController
   def create
-    menu = Menu.find(params[:id])
     restaurant = Restaurant.find(params[:restaurant_id])
     menu = restaurant.menus.new(name: params[:name])
     menu.save!
