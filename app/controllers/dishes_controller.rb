@@ -1,5 +1,5 @@
 class DishesController < ApplicationController
-  before_action :find_dish, only: [:create, :pause, :unpause]
+  before_action :find_dish, only: [:create, :publish, :pause, :unpause]
   def create
     dish = Dish.new(
                     name: params[:name],
@@ -12,6 +12,7 @@ class DishesController < ApplicationController
   end
 
   def publish
+    dish = Dish.find(params[:id])
     dish.publish!
     render nothing: true
   end
