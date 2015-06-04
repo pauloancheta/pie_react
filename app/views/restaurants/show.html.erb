@@ -1,10 +1,15 @@
-<h1><%= @restaurant.name %></h1>
-  <%= react_component('NewMenu', {restaurant: @restaurant, menus: @menus}) %>
+<div class="container">
+  <div class="restaurant-feature-toolbar">
+    <%= react_component('MenuToolbar', {restaurant: @restaurant, menus: @menus}) %>
+  </div>
 
-<% @menus.each do |menu| %>
-  <h1><%= menu.name %> </h1>
-  State: <%= menu.state %>
-  <%= menu.change_state %>
-
-  <%= react_component('DishesIndex', {dishes: menu.dishes}) %>
-<% end %>
+  <div class="restaurant-menu">
+    <h1><%= @restaurant.name %></h1>
+    <% @menus.each do |menu| %>
+      <h1><%= menu.name %> </h1>
+      State: <%= menu.state %>
+      <%= menu.change_state %>
+      <%= react_component('DishesIndex', {dishes: menu.dishes}) %>
+    <% end %>
+  </div>
+</div>

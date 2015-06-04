@@ -1,4 +1,4 @@
-var NewMenu = React.createClass({
+var MenuToolbar = React.createClass({
   getInitialState: function(){
     return {restaurant: this.props.restaurant, menus: this.props.menus}
   },
@@ -37,18 +37,18 @@ var NewMenu = React.createClass({
       <div className="new-menu-form">
         <h1>New Menu</h1>
         <form onSubmit={this.menuFormHandler}>
-          <input type="text" ref="menuName" placeholder="Menu Name"></input>
+          <input type="text" ref="menuName" placeholder="Menu Name"></input><br />
           <input type="submit"></input>
         </form>
 
         <h1>New Dish</h1>
         <form onSubmit={this.dishFormHandler}>
-          <input type="text" ref="dishName" placeholder="Dish Name"></input>
-          <input type="text" ref="dishDesc" placeholder="Dish Description"></input>
-          <input type="text" ref="dishPrice" placeholder="Dish Price"></input>
+          <input type="text" ref="dishName" placeholder="Dish Name"></input><br />
+          <input type="text" ref="dishDesc" placeholder="Dish Description"></input><br />
+          <input type="text" ref="dishPrice" placeholder="Dish Price"></input><br />
           <select ref="menuID">
             {menuOptions}
-          </select>
+          </select><br />
           <input type="submit"></input>
         </form>
       </div>

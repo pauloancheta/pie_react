@@ -1,0 +1,14 @@
+.container {
+  position: relative;
+  .restaurant-feature-toolbar{
+    display: inline-block;
+    width: 250px;
+    height: 100%;
+  }
+  .restaurant-menu {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    height:100%;
+  }
+}
