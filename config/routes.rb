@@ -30,4 +30,17 @@ Rails.application.routes.draw do
   patch '/pause_dish/:id' => 'dishes#pause', as: :dishes_pause
   patch '/unpause_dish/:id' => 'dishes#unpause', as: :dishes_unpause
 
+  # API
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :restaurants, only: [:index] do
+        resources :menus, only: [:index]
+      end
+      resources :menus, only: [] do
+        resources :dishes, only: [:index]
+      end
+
+    end
+  end
+
 end
