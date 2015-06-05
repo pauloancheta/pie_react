@@ -13,6 +13,7 @@ gem 'simple_form'
 gem 'workflow'
 gem 'virtus'
 gem 'draper'
+gem 'jbuilder', '~> 2.0'
 
 group :production do
   gem 'rails_12factor'
