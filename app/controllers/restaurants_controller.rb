@@ -6,6 +6,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    # @menu = Menu::MenuIndex.call(user: current_user, restaurant: @restaurant)
     current_user.is_admin ? (@menus = @restaurant.menus.all.decorate) : (@menus = @restaurant.menus.with_available_state.decorate)
     @new_menu = @restaurant.menus.new
   end
