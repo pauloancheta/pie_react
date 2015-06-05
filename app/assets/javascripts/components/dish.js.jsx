@@ -32,11 +32,14 @@ var Dish = React.createClass({
 
   deleteDish: function(e){
     e.preventDefault
+    var answer = confirm('Are you sure you want to delete this dish?')
     var id = this.state.dish.id
-    $.ajax({
-      url: '/dishes/' + id,
-      method: 'DELETE'
-    })
+    if(answer){
+      $.ajax({
+        url: '/dishes/' + id,
+        method: 'DELETE'
+      })
+    }
   },
 
   render: function(){

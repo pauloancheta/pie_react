@@ -16,6 +16,7 @@
       <% else %>
       <!-- show all menus -->
         <h2 class="menu-title"><%= menu.name %> </h2>
+        <%= link_to "Delete", restaurant_menu_path(@restaurant, menu), method: :delete, data: {confirm: "Are you sure?"}, class: "button" %>
         <hr />
         <div class="menu-state">
           State: <%= menu.state %>
