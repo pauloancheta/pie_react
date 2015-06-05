@@ -7,6 +7,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update!
+    redirect_to :show
+  end
+
   def create
     @user = User.new user_params
     @user.is_admin = false # All created users should not be admin unless specified by super user
@@ -16,6 +30,12 @@ class UsersController < ApplicationController
     else
       redirect_to '/login'
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy!
+    redirect_to root_path
   end
 
   private

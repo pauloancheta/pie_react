@@ -12,11 +12,13 @@
 <header>
   <h1 class="logo">Picky Eater</h1>
   <% if user_signed_in? %>
-    <% if current_user.is_admin %>
-    <% else %> 
-    <% end %>
-    <%= link_to "Sign Out", logout_path %>
-  <% else %>
+    <div class="header__links">
+      <% if current_user.is_admin %>
+      <% else %> 
+      <% end %>
+      <%= link_to "User Profile", user_path(current_user) %>
+      <%= link_to "Sign Out", logout_path %>
+    </div>
   <% end %>
 
 </header>
