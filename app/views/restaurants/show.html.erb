@@ -16,6 +16,10 @@
           State: <%= menu.state %>
           <%= menu.change_state %>
         </div>
+        <div class="menu-availability">
+          <%= menu.time_available %>
+        </div>
+        
         <hr />
         <%= react_component('DishesIndex', {admin: current_user.is_admin, dishes: menu.dishes}) %>
       <% else %>

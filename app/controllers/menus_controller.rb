@@ -1,7 +1,10 @@
 class MenusController < ApplicationController
   def create
     restaurant = Restaurant.find(params[:restaurant_id])
-    menu = restaurant.menus.new(name: params[:name])
+    menu = restaurant.menus.new(name: params[:name],
+                                start_time: params[:menuStart],
+                                end_time: params[:menuEnd]
+                              )
     menu.save!
     render nothing: true
   end

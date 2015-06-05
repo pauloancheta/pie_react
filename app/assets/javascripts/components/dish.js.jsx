@@ -13,6 +13,7 @@ var Dish = React.createClass({
     var url = '';
     if(this.state.workflow === 'draft'){
       url = '/publish_dish/'
+      this.setState({workflow: 'available'})
     }
     else if(this.state.workflow === 'available'){
       url = '/pause_dish/'
