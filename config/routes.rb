@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :dishes, only: [:create]
   end
 
+  delete '/dishes/:id' => 'dishes#destroy'
+
   # MENU change state
   patch '/publish_menu/:id' => 'menus#publish', as: :menu_publish
   patch '/pause_menu/:id' => 'menus#pause', as: :menu_pause

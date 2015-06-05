@@ -30,10 +30,23 @@ var Dish = React.createClass({
     })
   },
 
+  deleteDish: function(e){
+    e.preventDefault
+    var id = this.state.dish.id
+    $.ajax({
+      url: '/dishes/' + id,
+      method: 'DELETE'
+    })
+  },
+
   render: function(){
     var changeState = ""
     if(this.state.admin){
-      changeState = (<a onClick={this.changeState} className="button">{this.state.workflow}</a>)
+      changeState = (
+        <div>
+          <a onClick={this.changeState} className="button">{this.state.workflow}</a>
+          <a onClick={this.deleteDish} className="button">Delete</a>
+        </div>)
     }
     return(
       <div className="dish-card">

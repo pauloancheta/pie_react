@@ -10,6 +10,12 @@ class DishesController < ApplicationController
     render nothing: true
   end
 
+  def destroy
+    dish = Dish.find(params[:id])
+    dish.destroy!
+    render nothing: true
+  end
+
   def publish
     dish = Dish.find(params[:id])
     dish.publish!
