@@ -1,2 +1,9 @@
 <h1>User Profile</h1>
-<%= @user.name %>
+<%= link_to "Edit Profile", edit_user_path(@user) %> <br>
+<hr>
+User Name: <%= @user.name %><br>
+Email: <%= @user.email %><br>
+Diet: <%= @user.diet %>
+
+<hr>
+<%= link_to "Cancel Account", user_path(@user), method: :delete, data: {confirm: "are you sure?"} %><br>

@@ -17,8 +17,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update!
-    redirect_to :show
+    @user.update! user_params
+    redirect_to user_path(@user)
   end
 
   def create
@@ -40,6 +40,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :is_admin, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :is_admin, :diet, :password, :password_confirmation)
   end
 end
