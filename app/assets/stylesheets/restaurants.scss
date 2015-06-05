@@ -44,17 +44,24 @@
   padding: 2px;
 }
 
-.dish-card{
-  .dish-card__title{
+.dish-container {
+  padding: 5px;
+  .dish-card{
     display: inline-block;
-    margin-bottom: 0;
-  }
-  .dish-card__price {
-    display: inline-block;
-    margin-left: 30px;
-    margin-bottom: 0;
-  }
-  .dish-card__description{
-    margin-top: 5px;
+    width: 50%;
+
+    .dish-card__title{
+      display: inline-block;
+      margin-bottom: 0;
+      margin-top: 5px;
+    }
+    .dish-card__price {
+      display: inline-block;
+      margin-left: 30px;
+      margin-bottom: 0;
+    }
+    .dish-card__description{
+      margin-top: 5px;
+    }
   }
 }

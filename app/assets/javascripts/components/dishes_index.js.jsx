@@ -10,7 +10,7 @@ var DishesIndex = React.createClass({
       dishArray.push(<Dish dishData={dish} admin={self.props.admin} />)
     })
     return(
-      <div>
+      <div className="dish-container">
         {dishArray}
       </div>
     )
