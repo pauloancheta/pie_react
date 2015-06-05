@@ -36,6 +36,11 @@ var MenuToolbar = React.createClass({
 
   render: function() {
     var menuOptions = []
+    var dietOptions = [
+      (<option value="Default">Default</option>),
+      (<option value="Vegetarian">Vegetarian</option>),
+      (<option value="Gluten Free">Gluten Free</option>)
+      ]
     this.state.menus.forEach(function(menu){
       menuOptions.push(<option value={menu.id}> {menu.name} </option>)
     })
@@ -54,6 +59,12 @@ var MenuToolbar = React.createClass({
           <input type="text" ref="dishName" placeholder="Dish Name"></input><br />
           <input type="text" ref="dishDesc" placeholder="Dish Description"></input><br />
           <input type="text" ref="dishPrice" placeholder="Dish Price"></input><br />
+          Primary Diet: <select ref="dishDiet">
+            {dietOptions}
+          </select>
+          Optional Diet: <select ref="dishOptDiet">
+            {dietOptions}
+          </select>
           <select ref="menuID">
             {menuOptions}
           </select><br />
