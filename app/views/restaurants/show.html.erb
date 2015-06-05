@@ -8,10 +8,15 @@
   <div class="restaurant-menu">
     <h1 class="restaurant-title"><%= @restaurant.name %></h1>
     <% @menus.each do |menu| %>
-      <h2 class="menu-title"><%= menu.name %> </h2>
-      <hr />
-
-      <% if current_user.is_admin %>
+      <!-- show only the available menu -->
+      <% if !current_user.is_admin  && menu.should_be_available? && menu.available? %>
+        <h2 class="menu-title"><%= menu.name %> </h2>
+        <hr />
+        <%= react_component('DishesIndex', {admin: current_user.is_admin, dishes: menu.dishes.with_available_state}) %>
+      <% else %>
+      <!-- show all menus -->
+        <h2 class="menu-title"><%= menu.name %> </h2>
+        <hr />
         <div class="menu-state">
           State: <%= menu.state %>
           <%= menu.change_state %>
@@ -20,8 +25,6 @@
           <%= menu.time_available %>
         </div>        
         <%= react_component('DishesIndex', {admin: current_user.is_admin, dishes: menu.dishes}) %>
-      <% else %>
-        <%= react_component('DishesIndex', {admin: current_user.is_admin, dishes: menu.dishes.with_available_state}) %>
       <% end %>
     <% end %>
   </div>

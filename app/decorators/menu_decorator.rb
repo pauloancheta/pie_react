@@ -16,6 +16,18 @@ class MenuDecorator < Draper::Decorator
     end
   end
 
+  def should_be_available?
+    time_now = time_format(Time.now)
+    if time_start && time_end
+      if time_start <= time_now && time_end >= time_now
+        object.unpause! unless object.available?
+      else
+        object.pause! unless object.paused?
+      end
+    end
+    true
+  end
+
   def time_available
     if time_start && time_end
       "Menu start: #{time_start} Menu end: #{time_end}"
@@ -33,7 +45,7 @@ class MenuDecorator < Draper::Decorator
 
   def time_format(time)
     if time
-      time.strftime("%I:%M%p")
+      time.strftime("%H:%M")
     end
   end
 end
