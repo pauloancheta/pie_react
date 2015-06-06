@@ -24,9 +24,19 @@ var MenuToolbar = React.createClass({
     var dishName = React.findDOMNode(this.refs.dishName).value + '',
         dishDesc = React.findDOMNode(this.refs.dishDesc).value + '',
        dishPrice = React.findDOMNode(this.refs.dishPrice).value + '',
-        dishMenu = React.findDOMNode(this.refs.menuID).value + '';
+        dishMenu = React.findDOMNode(this.refs.menuID).value + '',
+        dishDiet = React.findDOMNode(this.refs.dishDiet).value + '',
+     dishOptDiet = React.findDOMNode(this.refs.dishOptDiet).value + '';
+
     var url = '/menus/' + dishMenu + '/dishes';
-    $.post(url, {name: dishName, description: dishDesc, price: dishPrice, menu_id: dishMenu})
+    $.post(url, {
+      name: dishName, 
+      description: dishDesc, 
+      price: dishPrice, 
+      menu_id: dishMenu,
+      primary_diet: dishDiet,
+      optional_diet: dishOptDiet
+    })
 
     //reset values
     dishName = React.findDOMNode(this.refs.dishName).value = '';

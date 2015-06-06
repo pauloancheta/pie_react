@@ -43,10 +43,15 @@ var Dish = React.createClass({
   },
 
   render: function(){
+    console.log(this.state.dish)
     var changeState = ""
     if(this.state.admin){
       changeState = (
         <div>
+          <div className="diet">
+            <p className="diet__primary">Primary Diet: {this.state.dish.primary_diet}</p>
+            <p className="diet__optional">Optional Diet: {this.state.dish.optional_diet}</p>
+          </div>
           <a onClick={this.changeState} className="button">{this.state.workflow}</a>
           <a onClick={this.deleteDish} className="button">Delete</a>
         </div>)
