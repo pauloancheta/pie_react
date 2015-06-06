@@ -3,7 +3,7 @@
 <%= simple_form_for @user do |f| %>
   <%= f.input :name %>
   <%= f.input :email %>
-  <%= f.input :diet, as: :check_boxes, priority: ["Default"], collection: ["Default", "Vegetarian", "Gluten Free"] %>
+  <%#= f.input :diet, as: :check_boxes, priority: ["Default"], collection: ["Default", "Vegetarian", "Gluten Free"] %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
   <%= f.submit %>

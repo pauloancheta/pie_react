@@ -2,6 +2,8 @@ class Dish < ActiveRecord::Base
   include Workflow
 
   belongs_to :menu
+  has_many :dish_diets, dependent: :destroy
+  has_many :diets, through: :dish_diets, dependent: :nullify
 
   workflow do
     state :draft do

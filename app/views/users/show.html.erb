@@ -2,8 +2,7 @@
 <%= link_to "Edit Profile", edit_user_path(@user) %> <br>
 <hr>
 User Name: <%= @user.name %><br>
-Email: <%= @user.email %><br>
-Diet: <%= @user.diet %>
+Email: <%= @user.email %>
 
 <hr>
 <%= link_to "Cancel Account", user_path(@user), method: :delete, data: {confirm: "are you sure?"} %><br>

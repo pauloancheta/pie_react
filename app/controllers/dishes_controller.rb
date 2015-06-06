@@ -4,9 +4,7 @@ class DishesController < ApplicationController
                     name: params[:name],
                     price: params[:price],
                     description: params[:description],
-                    menu_id: params[:menu_id],
-                    primary_diet: params[:primary_diet],
-                    optional_diet: params[:optional_diet]
+                    menu_id: params[:menu_id]
                   )
     dish.save!
     render nothing: true

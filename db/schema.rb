@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605191459) do
+ActiveRecord::Schema.define(version: 20150606205423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "diets", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dish_diets", force: :cascade do |t|
+    t.integer  "dish_id"
+    t.integer  "diet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "dish_diets", ["diet_id"], name: "index_dish_diets_on_diet_id", using: :btree
+  add_index "dish_diets", ["dish_id"], name: "index_dish_diets_on_dish_id", using: :btree
 
   create_table "dishes", force: :cascade do |t|
     t.string   "name"
@@ -24,8 +40,6 @@ ActiveRecord::Schema.define(version: 20150605191459) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "workflow_state"
-    t.string   "primary_diet"
-    t.string   "optional_diet"
   end
 
   add_index "dishes", ["menu_id"], name: "index_dishes_on_menu_id", using: :btree
@@ -62,9 +76,10 @@ ActiveRecord::Schema.define(version: 20150605191459) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "diet"
   end
 
+  add_foreign_key "dish_diets", "diets"
+  add_foreign_key "dish_diets", "dishes"
   add_foreign_key "dishes", "menus"
   add_foreign_key "menus", "restaurants"
   add_foreign_key "restaurants", "users"

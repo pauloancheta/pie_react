@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dish_id: 
+  diet_id: 
+
+two:
+  dish_id: 
+  diet_id: 
