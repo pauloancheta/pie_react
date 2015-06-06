@@ -3,7 +3,7 @@ var Dish = React.createClass({
     return {
       dish: this.props.dishData, 
       workflow: this.props.dishData.workflow_state,
-      admin: this.props.admin
+      admin: this.props.user.is_admin
     }
   },
 
@@ -43,7 +43,7 @@ var Dish = React.createClass({
   },
 
   render: function(){
-    console.log(this.state.dish)
+    console.log(this.props.user)
     var changeState = ""
     if(this.state.admin){
       changeState = (

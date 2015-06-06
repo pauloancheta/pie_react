@@ -7,7 +7,7 @@ var DishesIndex = React.createClass({
     var dishArray = []
     var self = this
     this.state.dishes.forEach(function(dish){
-      dishArray.push(<Dish dishData={dish} admin={self.props.admin} />)
+      dishArray.push(<Dish dishData={dish} user={self.props.user} />)
     })
     return(
       <div className="dish-container">
