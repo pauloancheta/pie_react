@@ -9,10 +9,21 @@
     height: 100vh;
   }
 
+  #picky-eater {
+    margin: 0;
+    position: absolute;
+    right: 30px;
+    top: 40px;
+    color: #FFC700;
+    font-family: 'Amita', cursive;
+    font-weight: 700;
+    font-size: 5em;
+  }
+
 
   .sign_in_form {
     position: absolute;
-    bottom: 50%;
+    top: 30%;
     right: 30px;
     color: white;
     text-align: right;
