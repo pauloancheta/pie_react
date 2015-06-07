@@ -1,8 +1,14 @@
-<h1>Login</h1>
-<%= form_tag '/login' do %>
-  Email: <%= text_field_tag :email %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
-<% end %>
+<div class="landing__container">
+<div class="landing__darken">
+    <div class="sign_in_form">
+      <h1>Login</h1>
+      <%= form_tag '/login' do %>
+        <%= text_field_tag :email, nil, placeholder: "Email" %><br />
+        <%= password_field_tag :password, nil, placeholder: "Password" %><br />
+        <%= submit_tag "Submit" %>
+      <% end %>
+      <%= link_to 'Create an account', new_user_path %>
+    </div>
 
-<%= link_to 'Create an account', new_user_path %>
+  </div>
+</div>
