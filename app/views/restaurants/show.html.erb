@@ -12,7 +12,7 @@
       <% if !current_user.is_admin  && menu.should_be_available? && menu.available? %>
         <h2 class="menu-title"><%= menu.name %> </h2>
         <hr />
-        <%= react_component('DishesIndex', {user: current_user, dishes: menu.dishes.with_available_state}) %>
+        <%= react_component('DishesIndex', {user: current_user, dishes: menu.dishes.with_available_state, diets: @diets}) %>
       <% else %>
       <!-- show all menus -->
         <h2 class="menu-title"><%= menu.name %> </h2>

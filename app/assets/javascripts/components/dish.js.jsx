@@ -3,7 +3,8 @@ var Dish = React.createClass({
     return {
       dish: this.props.dishData, 
       workflow: this.props.dishData.workflow_state,
-      admin: this.props.user.is_admin
+      admin: this.props.user.is_admin,
+      diets: this.props.diets
     }
   },
 
@@ -42,12 +43,20 @@ var Dish = React.createClass({
     }
   },
 
+  clickHandler: function(){
+    console.log('CLICKED!')
+  },
+
   render: function(){
-    var changeState = ""
+    var adminTools = "";
+    var diets = [];
+    this.state.diets.forEach(function(diet){
+      diets.push(<input type="checkbox" onClick={this.clickHandler}>{diet.name}</input>)
+    })
+    
     if(this.state.admin){
-      changeState = (
+      adminTools = (
         <div>
-          <p className="diet"></p>
           <a onClick={this.changeState} className="button">{this.state.workflow}</a>
           <a onClick={this.deleteDish} className="button">Delete</a>
         </div>)
@@ -57,7 +66,7 @@ var Dish = React.createClass({
         <h2 className="dish-card__title">{this.state.dish.name}</h2>
         <p className="dish-card__price">{this.state.dish.price}</p>
         <p className="dish-card__description">{this.state.dish.description}</p>
-        {changeState}
+        {adminTools}
       </div>
     )
   }
