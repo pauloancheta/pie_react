@@ -27,7 +27,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     @user.is_admin = false # All created users should not be admin unless specified by super user
-    @user.diet = "Default" # This can be edited by the user on the edit profile page
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_path

@@ -7,7 +7,19 @@
         <%= password_field_tag :password, nil, placeholder: "Password" %><br />
         <%= submit_tag "Submit" %>
       <% end %>
-      <%= link_to 'Create an account', new_user_path %>
+      <%#= link_to 'Create an account', new_user_path %>
+      <a id="create_account">Don't have an account? Click here!</a>
+    </div>
+
+    <div class="new_user_form">
+      <%= simple_form_for @user do |f| %>
+        <%= f.input :name, label: false, placeholder: "Name"%>
+        <%= f.input :email, label: false, placeholder: "Email"  %>
+        <%= f.input :password, label: false, placeholder: "Password"  %>
+        <%= f.input :password_confirmation, label: false, placeholder: "Confirm Password"  %>
+        <%= f.submit %>
+      <% end %>
+      <a id="sign_in">Already have an account? Sign in here</a>
     </div>
 
   </div>

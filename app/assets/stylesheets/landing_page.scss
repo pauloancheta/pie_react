@@ -3,12 +3,10 @@
   background: url(asset-path('tomato.jpg')) no-repeat;
   background-size: 100% auto;
   position: relative;
-
   .landing__darken {
     background: rgba(0,0,0,0.5);
     height: 100vh;
   }
-
   #picky-eater {
     margin: 0;
     position: absolute;
@@ -19,32 +17,30 @@
     font-weight: 700;
     font-size: 5em;
   }
-
-
-  .sign_in_form {
+  .sign_in_form, .new_user_form {
     position: absolute;
     top: 30%;
     right: 30px;
     color: white;
     text-align: right;
-    a {
-      text-decoration: none;
-      color: white;
-    }
     h1 {
       margin-top: 0;
     }
-    input[type="text"], input[type="password"]{
+    input[type="text"], input[type="password"], input[type="email"]{
       background: none;
       border: none;
-      border-bottom: 1px solid salmon;
+      border-bottom: 1px solid #FFC700;
       margin-bottom: 8px;
+      outline: none;  
+      transition: 1s;
+      font-size: 18px;
     }
-
     input[type="submit"] {
-      border: 1px solid salmon;
+      border: 1px solid #FFC700;
       background: none;
     }
-
+  }
+  .new_user_form {
+    display: none;    
   }
 }
