@@ -1,7 +1,7 @@
 <div class="container">
   <% if current_user.is_admin %>
     <div class="restaurant-feature-toolbar">
-      <%= react_component('MenuToolbar', {restaurant: @restaurant, menus: @menus}) %>
+      <%= react_component('MenuToolbar', {restaurant: @restaurant, menus: @menus, diets: @diets}) %>
     </div>
   <% end %>
 

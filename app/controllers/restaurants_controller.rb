@@ -9,5 +9,6 @@ class RestaurantsController < ApplicationController
     # @menu = Menu::MenuIndex.call(user: current_user, restaurant: @restaurant)
     @menus = @restaurant.menus.all.decorate
     @new_menu = @restaurant.menus.new
+    @diets = Diet.all
   end
 end

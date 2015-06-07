@@ -6,7 +6,9 @@ class DishesController < ApplicationController
                     description: params[:description],
                     menu_id: params[:menu_id]
                   )
+    puts "---------------------------------------------------#{params[:dish_diet]}"
     dish.save!
+    diet = dish.dish_diets.create(diet_id: params[:dish_diet])
     render nothing: true
   end
 
