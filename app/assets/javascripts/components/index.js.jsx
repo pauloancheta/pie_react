@@ -30,11 +30,11 @@ var IndexPage = React.createClass({
     if(this.state.user.name === 'Paulo'){
       createRestaurant = (
         <form onSubmit={this.onRestaurantSubmit}>
-          <input type="text" placeholder="Restaurant Name" ref="resName"></input>
-          <input type="text" placeholder="Restaurant Address" ref="resAddress"></input>
-          <input type="text" placeholder="Restaurant Email" ref="resEmail"></input>
-          <input type="text" placeholder="Restaurant Phone Number" ref="resPhone"></input>
-          <input type="text" placeholder="Restaurant Image Url" ref="resImage"></input>
+          <input type="text" placeholder="Restaurant Name" ref="resName"></input><br />
+          <input type="text" placeholder="Restaurant Address" ref="resAddress"></input><br />
+          <input type="text" placeholder="Restaurant Email" ref="resEmail"></input><br />
+          <input type="text" placeholder="Restaurant Phone Number" ref="resPhone"></input><br />
+          <input type="text" placeholder="Restaurant Image Url" ref="resImage"></input><br />
           <input type="submit"></input>
         </form>
       )
@@ -45,6 +45,8 @@ var IndexPage = React.createClass({
 
     return(
       <div>
+        <div className="create-restaurant">
+        </div>
         {createRestaurant}
         <div className="restaurants-container">
           {restuarantCards}
