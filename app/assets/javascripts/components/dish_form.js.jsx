@@ -9,16 +9,18 @@ var DishForm = React.createClass({
         dishDesc = React.findDOMNode(this.refs.dishDesc).value + '',
        dishPrice = React.findDOMNode(this.refs.dishPrice).value + '',
         dishMenu = React.findDOMNode(this.refs.menuID).value + '',
-        dishDiet = React.findDOMNode(this.refs.dishDiet).value + '';
+        dishDiet = React.findDOMNode(this.refs.dishDiet).value;
 
     var url = '/menus/' + dishMenu + '/dishes';
-    $.post(url, {
-      name: dishName, 
-      description: dishDesc, 
-      price: dishPrice, 
-      menu_id: dishMenu,
-      dish_diet: dishDiet
-    })
+    // $.post(url, {
+    //   name: dishName, 
+    //   description: dishDesc, 
+    //   price: dishPrice, 
+    //   menu_id: dishMenu,
+    //   dish_diet: dishDiet
+    // })
+
+    console.log(dishDiet)
 
     //reset values
     dishName = React.findDOMNode(this.refs.dishName).value = '';
@@ -29,7 +31,7 @@ var DishForm = React.createClass({
   render: function(){
     var dietOptions = []
     this.state.diets.forEach(function(diet){
-      dietOptions.push(<option value={diet.id}>{diet.name}</option>)
+      dietOptions.push(<input type="checkbox" value={diet.id} ref={diet.name}>{diet.name}</input>)
     })
     return(
       <div className="dish-form">
@@ -38,9 +40,9 @@ var DishForm = React.createClass({
           <input type="text" ref="dishName" placeholder="Dish Name"></input><br />
           <input type="text" ref="dishDesc" placeholder="Dish Description"></input><br />
           <input type="text" ref="dishPrice" placeholder="Dish Price"></input><br />
-          Diet: <select ref="dishDiet">
+
             {dietOptions}
-          </select><br />
+
           Menu: <select ref="menuID">
             {this.props.menuOptions}
           </select><br />
