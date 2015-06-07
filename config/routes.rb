@@ -18,7 +18,11 @@ Rails.application.routes.draw do
     resources :dishes, only: [:create]
   end
 
+  resources :dishes do
+    resources :dish_diets, only: [:destroy]
+  end
   delete '/dishes/:id' => 'dishes#destroy'
+  post '/dishes/:dish_id/dish_diets/:id' => 'dish_diets#create'
 
   # MENU change state
   patch '/publish_menu/:id' => 'menus#publish', as: :menu_publish
@@ -39,7 +43,6 @@ Rails.application.routes.draw do
       resources :menus, only: [] do
         resources :dishes, only: [:index]
       end
-
     end
   end
 

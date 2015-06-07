@@ -33,7 +33,7 @@ var MenuToolbar = React.createClass({
           <input type="time" ref="menuEnd"> End Time</input><br />
           <input type="submit"></input>
         </form>
-        <DishForm menuOptions={menuOptions} diets={this.props.diets}/>
+        <DishForm menuOptions={menuOptions}/>
       </div>
     )
   }
