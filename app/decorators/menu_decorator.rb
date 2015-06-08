@@ -11,7 +11,7 @@ class MenuDecorator < Draper::Decorator
       h.link_to "Publish", h.menu_publish_path(object), method: :patch, class: 'button'
     when "Available"
       h.link_to "Pause", h.menu_pause_path(object), method: :patch, class: 'button'
-    when "Paused"
+    when "Unavailable"
       h.link_to "Unpause", h.menu_unpause_path(object), method: :patch, class: 'button'
     end
   end
