@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  def validation_attributes(new_atributes = {})
+  def validation_attributes(new_attributes = {})
     password = Faker::Internet.password
     valid_atributes = {
       name: Faker::Name.name,
@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
       password: password,
       password_confirmation: password
     }
-    valid_atributes.merge(new_atributes)
+    valid_atributes.merge(new_attributes)
   end 
 
   it "reqiures a name" do
