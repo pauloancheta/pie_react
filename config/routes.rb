@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # these routes are for showing users a login form, logging them in, and logging them out.
-  get '/login' => 'sessions#new'
+  get '/login' => 'sessions#new', as: :new_session
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
