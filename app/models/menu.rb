@@ -12,7 +12,7 @@ class Menu < ActiveRecord::Base
       event :publish, transitions_to: :available
     end
     state :available do
-      event :pause, transitions_to: :paused
+      event :pause, transitions_to: :unavailable
     end
     state :paused do
       event :unpause, transitions_to: :available
