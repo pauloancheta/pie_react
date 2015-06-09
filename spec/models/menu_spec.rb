@@ -39,33 +39,34 @@ RSpec.describe Menu, type: :model do
       expect(menu.workflow_state).to eq("draft")
     end
 
-    it "becomes available when published" do
+    it "becomes published when published from draft state" do
       menu = Menu.create(valid_attributes)
       menu.publish!
-      expect(menu.workflow_state).to eq("available")
+      expect(menu.workflow_state).to eq("published")
     end
 
-    it "becomes unavailable when paused" do
+    it "becomes draft when cancelled from a published state" do
+      menu = Menu.create(valid_attributes)
+      menu.publish!
+      menu.cancel!
+      expect(menu.workflow_state).to eq("draft")
+    end
+
+    it "becomes paused when paused from a published state" do
       menu = Menu.create(valid_attributes)
       menu.publish!
       menu.pause!
-      expect(menu.workflow_state).to eq("unavailable")
+      expect(menu.workflow_state).to eq("paused")
     end
 
-    it "becomes available again when unpaused" do
+    it "becomes published when unpased from a paused state" do
       menu = Menu.create(valid_attributes)
       menu.publish!
       menu.pause!
       menu.unpause!
-      expect(menu.workflow_state).to eq("available")
+      expect(menu.workflow_state).to eq("published")
     end
 
-    it "becomes cancelled when cancelled from unavailable state" do
-      menu = Menu.create(valid_attributes)
-      menu.publish!
-      menu.pause!
-      menu.cancel!
-      expect(menu.workflow_state).to eq("cancelled")
-    end
+
   end
 end
