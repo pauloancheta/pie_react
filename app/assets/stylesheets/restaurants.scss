@@ -10,11 +10,14 @@
   .dish-card{
     display: inline-block;
     width: 50%;
+    padding-left: 5px;
+    padding-right: 5px;
 
     .dish-card__title{
       display: inline-block;
       margin-bottom: 0;
       margin-top: 5px;
+      font-size: 18px;
     }
     .dish-card__price {
       display: inline-block;
@@ -23,6 +26,7 @@
     }
     .dish-card__description{
       margin-top: 5px;
+      font-size: 14px;
     }
 
     .diet {

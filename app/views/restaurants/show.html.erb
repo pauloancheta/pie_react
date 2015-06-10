@@ -8,27 +8,29 @@
   <div class="restaurant-menu">
     <h1 class="restaurant-title"><%= @restaurant.name %></h1>
     <% @menus.each do |menu| %>
-      <!-- show only the available menu for non admin user -->
-      <% if !current_user.is_admin  %>
-        <% if menu.should_be_available? && menu.published? %>
+      <div class="menu-container">
+        <!-- show only the available menu for non admin user -->
+        <% if !current_user.is_admin  %>
+          <% if menu.should_be_available? && menu.published? %>
+            <h2 class="menu-title"><%= menu.name %> </h2>
+            <hr />
+            <%= react_component('DishesIndex', {user: current_user, dishes: menu.dishes.with_available_state, diets: @diets}) %>
+          <% end %>
+        <% else %>
+        <!-- show all menus for admin user -->
           <h2 class="menu-title"><%= menu.name %> </h2>
+          <%= link_to "Delete", restaurant_menu_path(@restaurant, menu), method: :delete, data: {confirm: "Are you sure?"}, class: "button" %>
           <hr />
-          <%= react_component('DishesIndex', {user: current_user, dishes: menu.dishes.with_available_state, diets: @diets}) %>
+          <div class="menu-state">
+            State: <%= menu.state %>
+            <%= menu.change_state %>
+          </div>
+          <div class="menu-availability">
+            <%= menu.time_available %>
+          </div>        
+          <%= react_component('DishesIndex', {user: current_user, dishes: menu.dishes, diets: @diets}) %>
         <% end %>
-      <% else %>
-      <!-- show all menus for admin user -->
-        <h2 class="menu-title"><%= menu.name %> </h2>
-        <%= link_to "Delete", restaurant_menu_path(@restaurant, menu), method: :delete, data: {confirm: "Are you sure?"}, class: "button" %>
-        <hr />
-        <div class="menu-state">
-          State: <%= menu.state %>
-          <%= menu.change_state %>
-        </div>
-        <div class="menu-availability">
-          <%= menu.time_available %>
-        </div>        
-        <%= react_component('DishesIndex', {user: current_user, dishes: menu.dishes, diets: @diets}) %>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>
