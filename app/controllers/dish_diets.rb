@@ -2,7 +2,7 @@ class DishDietsController < ApplicationController
   def create
     dish = Dish.find(params[:dish_id])
     diet = Diet.find(params[:id])
-    dd = DishDiet.new(dish_id: dish.id, diet_id: diet,id)
+    dd = DishDiet.new(dish_id: dish.id, diet_id: diet.id)
     dd.save!
     render nothing: true
   end
