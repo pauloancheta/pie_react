@@ -9,9 +9,9 @@ class MenuDecorator < Draper::Decorator
     case object.workflow_state.capitalize
     when "Draft"
       h.link_to "Publish", h.menu_publish_path(object), method: :patch, class: 'button'
-    when "Available"
+    when "Published"
       h.link_to "Pause", h.menu_pause_path(object), method: :patch, class: 'button'
-    when "Unavailable"
+    when "Paused"
       h.link_to "Unpause", h.menu_unpause_path(object), method: :patch, class: 'button'
     end
   end
