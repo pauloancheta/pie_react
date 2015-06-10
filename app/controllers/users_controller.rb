@@ -29,6 +29,7 @@ class UsersController < ApplicationController
     @user.is_admin = false # All created users should not be admin unless specified by super user
     if @user.save
       session[:user_id] = @user.id
+      initialize_preference(@user)
       redirect_to root_path
     else
       redirect_to '/login'
@@ -44,5 +45,12 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :is_admin, :password, :password_confirmation)
+  end
+
+  def initialize_preference(user)
+    p = Preference.new
+    p.user_id = user.id
+    p.diet_id = Diet.first.id
+    p.save!
   end
 end
