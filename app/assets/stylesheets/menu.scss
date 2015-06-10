@@ -11,4 +11,8 @@
     top: 0px;
     height:100%;
   }
+
+  .menu-title ~ div {
+    display: none
+  }
 }
