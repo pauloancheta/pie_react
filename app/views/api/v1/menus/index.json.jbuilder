@@ -5,6 +5,8 @@ json.array! @menus do |menu|
     json.workflow_state menu.workflow_state
     json.start_time menu.start_time
     json.end_time menu.end_time
+    json.start_date menu.start_date
+    json.end_date menu.end_date
 
     json.dishes do
       json.array! Dish.where(menu_id: menu) do |dish|
@@ -12,7 +14,6 @@ json.array! @menus do |menu|
         json.name dish.name
         json.description dish.description
         json.price dish.price
-        json.state dish.workflow_state
       end
     end
   end
