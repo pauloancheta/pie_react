@@ -16,6 +16,7 @@ class Menu < ActiveRecord::Base
     end
     state :paused do
       event :unpause, transitions_to: :published
+      event :cancel, transitions_to: :draft
     end
   end
 end
