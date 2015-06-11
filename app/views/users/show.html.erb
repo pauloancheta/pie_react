@@ -2,7 +2,16 @@
 <%= link_to "Edit Profile", edit_user_path(@user) %> <br>
 <hr>
 User Name: <%= @user.name %><br>
-Email: <%= @user.email %>
+Email: <%= @user.email %><br>
+Diet: <%= @preference.diet.name %><br>
+Allergic to: <br>
+<% @preference.ingredients.each do |i| %>
+  <%= i.name %>
+<% end %>
+
+<%= simple_form_for @preference.ingredients.new do |i| %>
+  <%= i.input :name %>
+<% end %>
 
 <hr>
 <%= link_to "Cancel Account", user_path(@user), method: :delete, data: {confirm: "are you sure?"} %><br>

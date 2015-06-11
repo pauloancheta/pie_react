@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :dishes do
     resources :dish_diets, only: [:destroy]
   end
+  resources :ingredients, only: [:create]
+
   delete '/dishes/:id' => 'dishes#destroy'
   post '/dishes/:dish_id/dish_diets/:id' => 'dish_diets#create'
 
