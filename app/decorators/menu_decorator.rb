@@ -20,7 +20,7 @@ class MenuDecorator < Draper::Decorator
     if time_start && time_end
       time_now = time_format(Time.now)
       if time_start <= time_now && time_end >= time_now
-        object.unpause! unless object.published?
+        object.unpause! unless object.published? || object.draft?
       else
         object.pause! unless object.paused?
       end

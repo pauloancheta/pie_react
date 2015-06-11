@@ -1,5 +1,6 @@
 class Api::V1::MenusController < ApplicationController
   def index
-    @menus = Menu.all.order('id ASC').decorate
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @menus = @restaurant.menus.order('id ASC').decorate
   end
 end
