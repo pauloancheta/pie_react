@@ -9,6 +9,17 @@ class MenusController < ApplicationController
     render nothing: true
   end
 
+  def edit
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @menu = Menu.find(params[:id])
+  end
+
+  def update
+    @menu = Menu.find(params[:id])
+    @menu.update(menu_params)
+    redirect_to restaurant_path(@menu.restaurant_id)
+  end
+
   def destroy
     restaurant = Restaurant.find(params[:restaurant_id])
     menu = Menu.find(params[:id])
@@ -33,4 +44,10 @@ class MenusController < ApplicationController
     menu.unpause!
     redirect_to restaurant_path(menu.restaurant)
   end
+
+  private
+  def menu_params
+    params.require(:menu).permit(:name, :start_time, :end_time, :start_date, :end_date)
+  end
+
 end
