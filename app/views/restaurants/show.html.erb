@@ -15,7 +15,11 @@
             <h2 class="menu-title"><%= menu.name %> </h2>
             <p><%= menu.description%></p>
             <hr />
-            <%= react_component('DishesIndex', {user: current_user, dishes: menu.dishes, diets: @diets}) %>
+            <div class="dish-container">
+              <% menu.dishes.each do |dish| %>
+                <%= react_component('Dish', {user: current_user, dish: dish, diets: @diets, extras: dish.dish_extras}) %>
+              <% end %>
+            </div>
           <% end %>
         <% else %>
         <!-- show all menus for admin user -->
@@ -31,7 +35,11 @@
           <div class="menu-availability">
             <%= menu.time_available %>
           </div>        
-          <%= react_component('DishesIndex', {user: current_user, dishes: menu.dishes, diets: @diets}) %>
+          <div class="dish-container">
+            <% menu.dishes.each do |dish| %>
+              <%= react_component('Dish', {user: current_user, dish: dish, diets: @diets, extras: dish.dish_extras}) %>
+            <% end %>
+          </div>
         <% end %>
       </div>
     <% end %>

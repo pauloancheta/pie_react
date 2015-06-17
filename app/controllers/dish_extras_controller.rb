@@ -1,6 +1,6 @@
 class DishExtrasController < ApplicationController
   def index
-    @dish = Dish.find(params[:id])
+    @dish = Dish.find(params[:dish_id])
     @dish_extras = @dish.dish_extras.all
     render json: @dish_extras
   end

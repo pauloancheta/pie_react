@@ -1,7 +1,7 @@
 var Dish = React.createClass({
   getInitialState: function(){
     return {
-      dish: this.props.dishData,
+      dish: this.props.dish,
       admin: this.props.user.is_admin,
       diets: this.props.diets
     }
@@ -29,7 +29,7 @@ var Dish = React.createClass({
     this.state.diets.forEach(function(diet){
       diets.push(<input type="checkbox" onClick={this.clickHandler}>{diet.name}</input>)
     })
-    
+    console.log(this.state.dish)
     if(this.state.admin){
       adminTools = (
         <div>
