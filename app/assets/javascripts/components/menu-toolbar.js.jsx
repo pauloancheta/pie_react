@@ -6,17 +6,20 @@ var MenuToolbar = React.createClass({
   menuFormHandler: function(e) {
     e.preventDefault();
     var menuName = React.findDOMNode(this.refs.menuName).value + '';
+    var menuDesc = React.findDOMNode(this.refs.menuDesc).value + '';
     var menuStart = React.findDOMNode(this.refs.menuStart).value + '';
     var menuEnd = React.findDOMNode(this.refs.menuEnd).value + '';
     var url = '/restaurants/' + this.state.restaurant.id + '/menus'
     $.post(url, {
       name: menuName,
+      description: menuDesc,
       menuStart: menuStart,
       menuEnd: menuEnd
     });
 
     // reset values
     React.findDOMNode(this.refs.menuName).value = '';
+    React.findDOMNode(this.refs.menuDesc).value = '';
   },
 
   render: function() {
@@ -29,6 +32,7 @@ var MenuToolbar = React.createClass({
         <h1>New Menu</h1>
         <form onSubmit={this.menuFormHandler}>
           <input type="text" ref="menuName" placeholder="Menu Name"></input><br />
+          <input type="text" ref="menuDesc" placeholder="Menu Description"></input><br />
           <input type="time" ref="menuStart"> Start Time</input><br />
           <input type="time" ref="menuEnd"> End Time</input><br />
           <input type="submit"></input>

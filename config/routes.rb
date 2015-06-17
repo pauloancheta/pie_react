@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   resources :dishes do
     resources :dish_diets, only: [:destroy]
+    resources :dish_extras, only: [:index, :new, :create, :destroy]
   end
   resources :ingredients, only: [:create]
 

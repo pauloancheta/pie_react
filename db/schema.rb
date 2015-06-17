@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611013549) do
+ActiveRecord::Schema.define(version: 20150617191040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20150611013549) do
 
   add_index "dish_diets", ["diet_id"], name: "index_dish_diets_on_diet_id", using: :btree
   add_index "dish_diets", ["dish_id"], name: "index_dish_diets_on_dish_id", using: :btree
+
+  create_table "dish_extras", force: :cascade do |t|
+    t.integer  "dish_id"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "dish_extras", ["dish_id"], name: "index_dish_extras_on_dish_id", using: :btree
 
   create_table "dishes", force: :cascade do |t|
     t.string   "name"
@@ -71,6 +80,7 @@ ActiveRecord::Schema.define(version: 20150611013549) do
     t.string   "category"
     t.date     "start_date"
     t.date     "end_date"
+    t.string   "description"
   end
 
   add_index "menus", ["restaurant_id"], name: "index_menus_on_restaurant_id", using: :btree
@@ -109,6 +119,7 @@ ActiveRecord::Schema.define(version: 20150611013549) do
 
   add_foreign_key "dish_diets", "diets"
   add_foreign_key "dish_diets", "dishes"
+  add_foreign_key "dish_extras", "dishes"
   add_foreign_key "dishes", "menus"
   add_foreign_key "filtered_ingredients", "ingredients"
   add_foreign_key "filtered_ingredients", "preferences"
