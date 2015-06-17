@@ -10,12 +10,12 @@
     <% @menus.each do |menu| %>
       <div class="menu-container">
         <!-- show only the available menu for non admin user -->
-        <% if !current_user.is_admin  %>
-          <% if menu.should_be_available? && menu.published? %>
+        <% if menu.should_be_available? && !current_user.is_admin  %>
+          <% if menu.published? %>
             <h2 class="menu-title"><%= menu.name %> </h2>
             <p><%= menu.description%></p>
             <hr />
-            <%= react_component('DishesIndex', {user: current_user, dishes: menu.dishes.with_available_state, diets: @diets}) %>
+            <%= react_component('DishesIndex', {user: current_user, dishes: menu.dishes, diets: @diets}) %>
           <% end %>
         <% else %>
         <!-- show all menus for admin user -->
