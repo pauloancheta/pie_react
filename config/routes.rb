@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :menus, only: [] do
-    resources :dishes, only: [:create]
+    resources :dishes, only: [:create, :show, :edit, :update, :destroy]
   end
 
   resources :dishes do
@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   end
   resources :ingredients, only: [:create]
 
-  delete '/dishes/:id' => 'dishes#destroy'
   post '/dishes/:dish_id/dish_diets/:id' => 'dish_diets#create'
 
   # MENU change state

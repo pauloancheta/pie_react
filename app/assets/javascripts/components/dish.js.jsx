@@ -1,46 +1,35 @@
 var Dish = React.createClass({
   getInitialState: function(){
+    var menuId = this.props.dish.menu_id
+    var dishId = this.props.dish.id
+    var url = '/menus/' + menuId + '/dishes/' + dishId
+
     return {
       dish: this.props.dish,
       admin: this.props.user.is_admin,
-      diets: this.props.diets
+      diets: this.props.diets,
+      extras: this.props.extras,
+      showUrl: url
     }
   },
 
-  deleteDish: function(e){
-    e.preventDefault
-    var answer = confirm('Are you sure you want to delete this dish?')
-    var id = this.state.dish.id
-    if(answer){
-      $.ajax({
-        url: '/dishes/' + id,
-        method: 'DELETE'
-      })
-    }
-  },
-
-  clickHandler: function(){
-    console.log('CLICKED!')
+  titleClick: function(){
+    window.location(url)
   },
 
   render: function(){
     var adminTools = "";
-    var diets = [];
-    this.state.diets.forEach(function(diet){
-      diets.push(<input type="checkbox" onClick={this.clickHandler}>{diet.name}</input>)
+    var extras= [];
+    this.state.extras.forEach(function(extra){
+      extras.push(<li>{extra.description}</li>)
     })
-    console.log(this.state.dish)
-    if(this.state.admin){
-      adminTools = (
-        <div>
-          <a onClick={this.deleteDish} className="button">Delete</a>
-        </div>)
-    }
+
     return(
       <div className="dish-card">
-        <h2 className="dish-card__title">{this.state.dish.name}</h2>
+        <a className="dish-card__title" href={this.state.showUrl}>{this.state.dish.name}</a>
         <p className="dish-card__price">{this.state.dish.price}</p>
         <p className="dish-card__description">{this.state.dish.description}</p>
+        {extras}
         {adminTools}
       </div>
     )
