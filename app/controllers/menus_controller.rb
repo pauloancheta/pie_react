@@ -3,8 +3,10 @@ class MenusController < ApplicationController
     restaurant = Restaurant.find(params[:restaurant_id])
     menu = restaurant.menus.new(name: params[:name],
                                 description: params[:description],
-                                start_time: params[:menuStart],
-                                end_time: params[:menuEnd]
+                                start_time: params[:startTime],
+                                end_time: params[:endTime],
+                                start_date: params[:startDate],
+                                end_date: params[:endDate]
                               )
     menu.save!
     render nothing: true
@@ -50,5 +52,4 @@ class MenusController < ApplicationController
   def menu_params
     params.require(:menu).permit(:name, :start_time, :end_time, :start_date, :end_date)
   end
-
 end

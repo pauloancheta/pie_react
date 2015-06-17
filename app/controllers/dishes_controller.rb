@@ -15,22 +15,4 @@ class DishesController < ApplicationController
     dish.destroy!
     render nothing: true
   end
-
-  def publish
-    dish = Dish.find(params[:id])
-    dish.publish!
-    render nothing: true
-  end
-
-  def pause
-    dish = Dish.find(params[:id])
-    dish.pause!
-    render nothing: true
-  end
-
-  def unpause
-    dish = Dish.find(params[:id])
-    dish.unpause!
-    render nothing: true
-  end
 end
