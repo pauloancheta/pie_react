@@ -1,34 +1,10 @@
 var Dish = React.createClass({
   getInitialState: function(){
     return {
-      dish: this.props.dishData, 
-      workflow: this.props.dishData.workflow_state,
+      dish: this.props.dishData,
       admin: this.props.user.is_admin,
       diets: this.props.diets
     }
-  },
-
-  changeState: function(e){
-    e.preventDefault();
-    var self = this;
-    var url = '';
-    if(this.state.workflow === 'draft'){
-      url = '/publish_dish/'
-      this.setState({workflow: 'available'})
-    }
-    else if(this.state.workflow === 'available'){
-      url = '/pause_dish/'
-      this.setState({workflow: 'unavailable'})
-    }
-    else if(this.state.workflow === 'unavailable'){
-      url = '/unpause_dish/'
-      this.setState({workflow: 'available'})
-    }
-    
-    $.ajax({
-      url: url + this.state.dish.id,
-      method: 'PATCH'
-    })
   },
 
   deleteDish: function(e){
@@ -57,7 +33,6 @@ var Dish = React.createClass({
     if(this.state.admin){
       adminTools = (
         <div>
-          <a onClick={this.changeState} className="button">{this.state.workflow}</a>
           <a onClick={this.deleteDish} className="button">Delete</a>
         </div>)
     }
