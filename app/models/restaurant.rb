@@ -6,7 +6,7 @@ class Restaurant < ActiveRecord::Base
   validates :address, presence: true
   validates :email, presence: true
   validates :phone_number, presence: true
-  validates :image_url, presence: true
+  # validates :image_url, presence: true
 
   def self.create_from_api(response)
     restaurant = Restaurant.new_from_api(response)

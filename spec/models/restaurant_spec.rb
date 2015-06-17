@@ -33,10 +33,10 @@ RSpec.describe Restaurant, type: :model do
       expect(restaurant).to be_invalid
     end
 
-    it "requires an image avatar" do
-      restaurant = Restaurant.new(valid_attributes(image_url: nil))
-      expect(restaurant).to be_invalid
-    end
+    # it "requires an image avatar" do
+    #   restaurant = Restaurant.new(valid_attributes(image_url: nil))
+    #   expect(restaurant).to be_invalid
+    # end
   end
 
   describe "methods" do
