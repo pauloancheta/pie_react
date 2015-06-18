@@ -15,6 +15,7 @@ class DishesController < ApplicationController
   end
 
   def edit
+    @dish_extra = @dish.dish_extras.new
   end
 
   def update

@@ -3,3 +3,8 @@
   <%= f.input :description %>
   <%= f.submit %>
 <% end %>
+
+<%= simple_form_for [@dish, @dish_extra] do |f| %>
+  <%= f.input :description %>
+  <%= f.submit %>
+<% end %>
