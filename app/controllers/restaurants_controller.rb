@@ -6,8 +6,11 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    # @menu = Menu::MenuIndex.call(user: current_user, restaurant: @restaurant)
-    @menus = @restaurant.menus.all.order('id ASC').decorate
+    if current_user.is_admin
+      @menus = @restaurant.menus.all.order('id ASC').decorate
+    else
+      @menus = @restaurant.menus.with_published_state.order('id ASC').decorate
+    end
     @new_menu = @restaurant.menus.new
     @diets = Diet.all
   end

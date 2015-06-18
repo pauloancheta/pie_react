@@ -9,32 +9,17 @@
     <h1 class="restaurant-title"><%= @restaurant.name %></h1>
     <% @menus.each do |menu| %>
       <div class="menu-container">
-        <!-- show only the available menu for non admin user -->
-        <% if menu.should_be_available? && !current_user.is_admin  %>
-          <% if menu.published? %>
-            <h2 class="menu-title"><%= menu.name %> </h2>
-            <p><%= menu.description%></p>
-            <hr />
-            <div class="dish-container">
-              <% menu.dishes.each do |dish| %>
-                <%= react_component('Dish', {user: current_user, dish: dish, diets: @diets, extras: dish.dish_extras}) %>
-              <% end %>
-            </div>
-          <% end %>
-        <% else %>
-        <!-- show all menus for admin user -->
+        <% if menu.should_be_available? %>
           <h2 class="menu-title"><%= menu.name %> </h2>
           <p><%= menu.description%></p>
-          <%= link_to "Delete", restaurant_menu_path(@restaurant, menu), method: :delete, data: {confirm: "Are you sure?"}, class: "button" %>
-          <%= link_to "Edit", edit_restaurant_menu_path(@restaurant, menu), class: "button" %>
-          <hr />
-          <div class="menu-state">
-            State: <%= menu.state %>
-            <%= menu.change_state %>
-          </div>
-          <div class="menu-availability">
+          <% if current_user.is_admin %>
+            <%= menu.delete %>
+            <%= menu.edit %>
+            <%= menu.state %> <%= menu.change_state %>
             <%= menu.time_available %>
-          </div>        
+          <% end %> 
+
+          <hr />
           <div class="dish-container">
             <% menu.dishes.each do |dish| %>
               <%= react_component('Dish', {user: current_user, dish: dish, diets: @diets, extras: dish.dish_extras}) %>
