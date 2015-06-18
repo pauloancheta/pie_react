@@ -18,6 +18,11 @@ class DishesController < ApplicationController
   end
 
   def update
+    render json: params
+    # @menu = Menu.find(params[:menu_id])
+    # restaurant = Restaurant.find(@menu.restaurant_id)
+    # @dish.update dish_params
+    # redirect_to restaurant_path(restaurant)
   end
 
   def destroy
