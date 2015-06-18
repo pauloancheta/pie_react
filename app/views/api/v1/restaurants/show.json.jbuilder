@@ -16,6 +16,12 @@ json.menus do
           json.dish_name dish.name
           json.description dish.description
           json.price dish.price
+
+          json.extras do
+            json.array! DishExtra.where(dish_id: dish) do |extra|
+              json.description extra.description
+            end
+          end
         end
       end
     end
