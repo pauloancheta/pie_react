@@ -14,6 +14,7 @@ gem 'workflow'
 gem 'virtus'
 gem 'draper'
 gem 'jbuilder', '~> 2.0'
+gem 'bootstrap-sass', '~> 3.3.5'
 
 group :production do
   gem 'rails_12factor'
