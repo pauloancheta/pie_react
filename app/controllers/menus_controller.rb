@@ -36,15 +36,9 @@ class MenusController < ApplicationController
     redirect_to restaurant_path(menu.restaurant)
   end
 
-  def pause
+  def cancel
     menu = Menu.find(params[:id])
-    menu.pause!
-    redirect_to restaurant_path(menu.restaurant)
-  end
-
-  def unpause
-    menu = Menu.find(params[:id])
-    menu.unpause!
+    menu.cancel!
     redirect_to restaurant_path(menu.restaurant)
   end
 
