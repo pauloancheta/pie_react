@@ -15,7 +15,6 @@ class DishesController < ApplicationController
   end
 
   def edit
-    @dish_extra = @dish.dish_extras.new
   end
 
   def update
@@ -27,9 +26,10 @@ class DishesController < ApplicationController
   end
 
   def destroy
+    menu = Menu.find(params[:menu_id])
     dish = Dish.find(params[:id])
     dish.destroy!
-    render nothing: true
+    redirect_to restaurant_path(menu.restaurant_id)
   end
 
   private

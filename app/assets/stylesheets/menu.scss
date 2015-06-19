@@ -23,7 +23,7 @@
       margin-bottom: 0;
     }
     .dish-card__description{
-      margin-top: 5px;
+      margin: 0;
       font-size: 14px;
     }
 
@@ -31,6 +31,11 @@
       p {
         margin: 0;
       }
+    }
+
+    li {
+      font-size: 12px;
+      line-height: 1;
     }
   }
 }
