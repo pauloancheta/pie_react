@@ -13,6 +13,9 @@ class DishExtrasController < ApplicationController
   end
 
   def destroy
+    @dish_extra = DishExtra.find(params[:id])
+    @dish_extra.destroy!
+    render nothing: true
   end
 
   private
