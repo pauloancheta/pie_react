@@ -6,15 +6,20 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
-gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
+gem 'jbuilder', '~> 2.0'
 gem 'bcrypt'
-gem 'quiet_assets'
+
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 gem 'simple_form'
 gem 'workflow'
 gem 'virtus'
 gem 'draper'
-gem 'jbuilder', '~> 2.0'
-gem 'bootstrap-sass', '~> 3.3.5'
+
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+
+gem 'quiet_assets'
 
 group :production do
   gem 'rails_12factor'

@@ -1,10 +1,14 @@
-<h1>Edit page</h1>
-<%= simple_form_for [@restaurant, @menu] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :start_time, include_blank: true %>
-  <%= f.input :end_time, include_blank: true %>
-  <%= f.input :start_date, include_blank: true %>
-  <%= f.input :end_date, include_blank: true %>
-  <%= f.submit %>
-<% end %>
-  
+<div class="container">
+  <h1>Edit page</h1>
+  <%= simple_form_for [@restaurant, @menu] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <div class='row datetimerange'>
+      <%= f.input :start_time, include_blank: true, as: :time_picker, wrapper: :ranged_datetime %>
+      <%= f.input :end_time, include_blank: true, as: :time_picker, wrapper: :ranged_datetime %>
+      <%= f.input :start_date, include_blank: true, as: :date_picker, wrapper: :ranged_datetime %>
+      <%= f.input :end_date, include_blank: true, as: :date_picker, wrapper: :ranged_datetime %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+</div>

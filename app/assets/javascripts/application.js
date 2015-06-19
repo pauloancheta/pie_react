@@ -15,5 +15,10 @@
 //= require bootstrap-sprockets
 //= require react
 //= require react_ujs
+
+//= require moment
+//= require bootstrap-datetimepicker
+//= require pickers
+
 //= require components
 //= require_tree .
