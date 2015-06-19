@@ -1,11 +1,13 @@
 <div class="container-fluid">
   <h1 class="restaurant-title"><%= @restaurant.name %></h1>
   <div class="row">
-    <div class="col-md-3">
-      <%= react_component('MenuToolbar', {restaurant: @restaurant, menus: @menus}) if current_user.is_admin%>
-    </div>
+    <% if current_user.is_admin %>
+      <div class="col-md-3">
+        <%= react_component('MenuToolbar', {restaurant: @restaurant, menus: @menus}) %>
+      </div>
+    <% end %>
 
-    <div class="col-md-9">
+    <div class=<%= current_user.is_admin ? "col-md-9" : "col-md-12"%> >
       <div class="restaurant-menu">
         <% @menus.each do |menu| %>
           <div class="menu-container">
