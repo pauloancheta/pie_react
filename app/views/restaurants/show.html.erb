@@ -15,8 +15,7 @@
               <h2 class="menu-title"><%= menu.name %> </h2>
               <p><%= menu.description%></p>
               <% if current_user.is_admin %>
-                <%= menu.delete %>
-                <%= menu.edit %>
+                <%= menu.delete %> <%= menu.edit %> <br>
                 <%= menu.state %> <%= menu.change_state %>
                 <%= menu.time_available %>
               <% end %> 
